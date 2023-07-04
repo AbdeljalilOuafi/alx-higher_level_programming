@@ -1,51 +1,42 @@
 #!/usr/bin/python3
-
-class SolveNQueens:
-
-    def __init__(self, n):
-        # Atributes and varibles
-        self.n = n
-        self.colSet = set()
-        self.posDiagSet = set()
-        self.negDiagSet = set()
-        self.board = self.create_board()
-        self.solution = []
+import sys
 
 
-    def create_board(self):
-        return [[" "] * self.n for i in range(self.n)]
+def solve_n_queens(N):
+    def can_place(pos, ocuppied_positions):
+        for i in range(len(ocuppied_positions)):
+            if ocuppied_positions[i] == pos or \
+                    ocuppied_positions[i] - i == pos - len(ocuppied_positions) or \
+                    ocuppied_positions[i] + i == pos + len(ocuppied_positions):
+                return False
+        return True
 
-    def parse_solution(self, board):
-        parsed_solution = []
-        for r in range(len(board)):
-            for c in range(len(board)):
-                if board[r][c] == "Q":
-                    parsed_solution.append([r, c])
-                    break
-        return (parsed_solution)
-
-    def solve_by_backtracking(self, r):
-        if r == self.n:
-            parsed_solution = self.parse_solution(self.board)
-            self.solution.append(parsed_solution)
+    def place_queen(ocuppied_positions, target_row, N):
+        if target_row == N:
+            result.append(ocuppied_positions)
             return
-        for c in range(self.n):
-            if c in self.colSet or (r+c) in self.posDiagSet or (r-c) in self.negDiagSet:
-                continue
+        for column in range(N):
+            if can_place(column, ocuppied_positions):
+                place_queen(ocuppied_positions + [column], target_row + 1, N)
 
-            self.colSet.add(c)
-            self.posDiagSet.add(r + c)
-            self.negDiagSet.add(r - c)
+    result = []
+    place_queen([], 0, N)
+    return result
 
-            self.board[r][c] = "Q"
 
-            self.solve_by_backtracking(r + 1)
+if __name__ == "__main__":
+    if len(sys.argv) != 2:
+        print("Usage: nqueens N")
+        sys.exit(1)
+    if not sys.argv[1].isdigit():
+        print("N must be a number")
+        sys.exit(1)
+    N = int(sys.argv[1])
+    if N < 4:
+        print("N must be at least 4")
+        sys.exit(1)
 
-            self.colSet.remove(c)
-            self.posDiagSet.remove(r + c)
-            self.negDiagSet.remove(r - c)
-            self.board[r][c] = " "
+    solutions = solve_n_queens(N)
+    for sol in solutions:
+        print([[i, sol[i]] for i in range(N)])
 
-    def solve(self):
-        self.solve_by_backtracking(0)
-        return self.solution
