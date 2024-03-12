@@ -7,6 +7,8 @@ if number > 0:
 elif number < 0:
     num = -number % 10
     last_digit = num * (-1)
+else:
+    last_digit = 0
 
 if last_digit > 5:
     phrase = f"and is greater than 5"
