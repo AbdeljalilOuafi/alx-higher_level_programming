@@ -3,21 +3,21 @@ import sys
 
 
 def solve_n_queens(N):
-    def can_place(pos, ocuppied_positions):
-        for i in range(len(ocuppied_positions)):
-            if ocuppied_positions[i] == pos or \
-                    ocuppied_positions[i] - i == pos - len(ocuppied_positions) or \
-                    ocuppied_positions[i] + i == pos + len(ocuppied_positions):
+    def can_place(pos, oc_positions):
+        for i in range(len(oc_positions)):
+            if oc_positions[i] == pos or \
+                    oc_positions[i] - i == pos - len(oc_positions) or \
+                    oc_positions[i] + i == pos + len(oc_positions):
                 return False
         return True
 
-    def place_queen(ocuppied_positions, target_row, N):
+    def place_queen(oc_positions, target_row, N):
         if target_row == N:
-            result.append(ocuppied_positions)
+            result.append(oc_positions)
             return
         for column in range(N):
-            if can_place(column, ocuppied_positions):
-                place_queen(ocuppied_positions + [column], target_row + 1, N)
+            if can_place(column, oc_positions):
+                place_queen(oc_positions + [column], target_row + 1, N)
 
     result = []
     place_queen([], 0, N)
@@ -39,4 +39,3 @@ if __name__ == "__main__":
     solutions = solve_n_queens(N)
     for sol in solutions:
         print([[i, sol[i]] for i in range(N)])
-
