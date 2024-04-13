@@ -5,7 +5,7 @@
 class Square():
     """ the class square """
     def __init__(self, __size=0) -> None:
-        if type(__size) != int:
+        if not isinstance(__size, int):
             raise TypeError("size must be an integer")
         elif __size < 0:
             raise ValueError("size must be >= 0")
@@ -18,7 +18,7 @@ class Square():
 
     @size.setter
     def size(self, value):
-        if type(value) != int:
+        if not isinstance(value, int):
             raise TypeError("size must be an integer")
         elif value < 0:
             raise ValueError("size must be >= 0")
@@ -29,9 +29,9 @@ class Square():
         return (self.__size * self.__size)
 
     def my_print(self):
-        if self.__size == 0:
+        if self.size == 0:
             print()
-        for i in range(self.__size):
-            for j in range(self.__size):
-                print("#", end="")
-            print()
+        else:
+            for i in range(self.size):
+                for j in range(self.size):
+                    print("#", end="" if j < self.size - 1 else "\n")
