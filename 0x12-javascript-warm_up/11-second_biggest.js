@@ -7,5 +7,5 @@ if (argv.length === 0) {
   console.log(1);
 } else {
   argv.sort((a, b) => b - a);
-  console.log(argv[1])
+  console.log(argv[1]);
 }
