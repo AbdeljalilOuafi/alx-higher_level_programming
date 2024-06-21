@@ -1,8 +1,9 @@
 #!/usr/bin/python3
-import MySQLdb
-from sys import argv
 
 if __name__ == "__main__":
+    import MySQLdb
+    from sys import argv
+    
     host = "localhost"
     user = argv[1]
     password = argv[2]
