@@ -12,9 +12,8 @@ if __name__ == "__main__":
                          passwd=argv[2],
                          db=argv[3])
     cursor = db.cursor()
-    query = "SELECT * FROM states WHERE name LIKE BINARY '{}' ORDER BY id ASC;"
-    query = query.format(argv[4])
-    cursor.execute(query)
+    query = "SELECT * FROM states WHERE name LIKE BINARY = %s ORDER BY id ASC;"
+    cursor.execute(query, (argv[4],))
 
     result = cursor.fetchall()
 
