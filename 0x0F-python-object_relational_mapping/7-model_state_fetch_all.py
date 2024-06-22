@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-
+"""Fetch all States"""
 from model_state import Base, State
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
