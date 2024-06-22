@@ -11,7 +11,7 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    result = session.query(State).filter_by(id=1).first()
+    result = session.query(State).filter_by(id=1).one_or_none()
     try:
         print("{}: {}".format(result.id, result.name))
     except Exception:
