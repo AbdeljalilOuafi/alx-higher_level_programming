@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Fetch A state"""
 from model_state import Base, State
 from model_city import City
 from sys import argv
