@@ -22,8 +22,3 @@ if __name__ == "__main__":
 
     cursor.close()
     db.close()
-
-#     query = """
-# SELECT * FROM states WHERE name LIKE BINARY '{}' ORDER BY states.id ASC"""
-#     query = query.format(argv[4])
-#     cur.execute(query)
