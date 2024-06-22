@@ -13,12 +13,13 @@ if __name__ == "__main__":
     cursor = db.cursor()
 
     cursor.execute(
-        "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC;"
+        "SELECT * FROM states ORDER BY id ASC;"
         )
     result = cursor.fetchall()
 
-    for row in result:
-        print(row)
+    for tuple in result:
+        if tuple[1][0] == 'N':
+            print(tuple)
 
     cursor.close()
     db.close()
