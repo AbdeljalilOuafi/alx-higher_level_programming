@@ -1,10 +1,11 @@
 #!/usr/bin/python3
-"""City Class"""
+"""City Module"""
 from model_state import Base
 from sqlalchemy import Column, Integer, String, ForeignKey
 
 
 class City(Base):
+    """City Class"""
     __tablename__ = "cities"
     id = Column(Integer,
                 primary_key=True,
