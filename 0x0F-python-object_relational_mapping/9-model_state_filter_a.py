@@ -12,7 +12,7 @@ if __name__ == "__main__":
     session = Session()
 
     result = session.query(State).filter(State.name.like('%a%\
-        ')).order_by(State.id).all()
+        ')).order_by(State.id.asc()).all()
 
     for object in result:
         print("{}: {}".format(object.id, object.name))
