@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-#!/usr/bin/python3
 
 """Get all states starting with 'N' and display them."""
 
@@ -22,4 +21,3 @@ if __name__ == "__main__":
 
     cursor.close()
     db.close()
-
