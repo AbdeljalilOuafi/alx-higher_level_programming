@@ -11,8 +11,10 @@ if __name__ == "__main__":
                          passwd=argv[2],
                          db=argv[3])
     cursor = db.cursor()
-    query = "SELECT * FROM states WHERE name = %s ORDER BY id ASC;"
-    cursor.execute(query, (argv[4],))
+    query = "SELECT * FROM states WHERE name LIKE BINARY '{}' ORDER BY id ASC;"
+    query = query.format(argv[4])
+    cursor.execute(query)
+
     result = cursor.fetchall()
 
     for tuple in result:
@@ -20,3 +22,8 @@ if __name__ == "__main__":
 
     cursor.close()
     db.close()
+
+#     query = """
+# SELECT * FROM states WHERE name LIKE BINARY '{}' ORDER BY states.id ASC"""
+#     query = query.format(argv[4])
+#     cur.execute(query)
