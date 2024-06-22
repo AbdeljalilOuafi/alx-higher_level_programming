@@ -14,5 +14,5 @@ if __name__ == "__main__":
     result = session.query(State).filter_by(id=1).first()
     try:
         print("{}: {}".format(result.id, result.name))
-    except Exception as e:
-        print(e)
+    except Exception:
+        print("Nothing")
