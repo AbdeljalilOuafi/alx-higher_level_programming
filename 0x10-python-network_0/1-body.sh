@@ -1,3 +1,3 @@
 #!/bin/bash
 #displays the body of the response
-echo "$(curl -sL "$@")"
+curl -sL $@
