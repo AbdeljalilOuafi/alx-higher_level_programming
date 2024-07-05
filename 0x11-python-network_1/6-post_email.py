@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""5-hbtn_header module"""
+"""6-hbtn_header module"""
 import requests
 from sys import argv
 
