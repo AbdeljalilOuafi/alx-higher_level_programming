@@ -1,12 +1,9 @@
 #!/usr/bin/python3
 """4-hbtn_status"""
-from urllib import request
+import requests
 
 if __name__ == "__main__":
-    with request.urlopen("https://alx-intranet.hbtn.io/status") as response:
-        data = response.read().decode('utf-8')
+    response = requests.get("https://alx-intranet.hbtn.io/status")
 
-print("Body response:\n\t\
-- type: {}\n\t\
-- content: {}".format(
-    type(data), data))
+    print("Body response:\n\t- type: {}\n\
+    \t- content: {}".format(type(response.text), response.text))
