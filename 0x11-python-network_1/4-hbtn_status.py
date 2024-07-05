@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""4-hbtn_status"""
 from urllib import request
 
 if __name__ == "__main__":
