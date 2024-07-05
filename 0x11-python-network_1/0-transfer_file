@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+#transfering a file to a server
+
+
+#assigning arguments to variables
+file=$1
+ip="81a0ce6dd5c0.3d34c52b.alx-cod.online"
+user="81a0ce6dd5c0"
+path_to_ssh_key="~/.ssh/id_rsa"
+
+scp -o "StrictHostKeyChecking=no" -i "$path_to_ssh_key" "$file" "$user@$ip:~/"
