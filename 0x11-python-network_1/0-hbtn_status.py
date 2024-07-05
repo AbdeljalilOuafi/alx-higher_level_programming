@@ -7,5 +7,4 @@ with request.urlopen("https://alx-intranet.hbtn.io/status") as response:
 
 print("Body response:\n\t\
     - type: {}\n\t\
-    - content: {}\n\t\
-    - utf8 content: {}".format(type(data), data, data.decode('utf8')))
+    - content: {}\n\t\- utf8 content: {}".format(type(data), data, data.decode('utf8')))
