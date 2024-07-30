@@ -4,8 +4,7 @@ const url = process.argv[2];
 
 request(url, (err, response, body) => {
   if (err) {
-    console.log('Error:', err);
-    return;
+    console.log(err);
   }
 
   const moveId = body.split('people/18/').length - 1;
