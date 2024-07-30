@@ -16,10 +16,10 @@ request(url, { json: true }, function (error, response, body) {
   const completeTasks = {};
 
   body.forEach(task => {
-    if (!(task.userId in completeTasks)) {
-      completeTasks[task.userId] = 0;
-    }
     if (task.completed) {
+      if (!completeTasks[task.userId]) {
+        completeTasks[task.userId] = 0;
+      }
       completeTasks[task.userId] += 1;
     }
   });
