@@ -13,7 +13,18 @@ request(url, function (error, response, body) {
     console.log('Status code', response.statusCode);
   }
 
-  const data = JSON.parse(body);
+  try {
+    data = JSON.parse(body);
+  } catch (e) {
+    console.log('Error parsing JSON:', e);
+    process.exit(1);
+  }
+
+  if (!Array.isArray(data)) {
+    console.log('Expected an array but received:', typeof data);
+    process.exit(1);
+  }
+
   const completeTasks = {};
 
   data.forEach(task => {
